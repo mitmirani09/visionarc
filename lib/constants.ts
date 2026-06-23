@@ -2,9 +2,9 @@ export const PUTER_WORKER_URL = import.meta.env.VITE_PUTER_WORKER_URL || "";
 
 // Storage Paths
 export const STORAGE_PATHS = {
-    ROOT: "roomify",
-    SOURCES: "roomify/sources",
-    RENDERS: "roomify/renders",
+    ROOT: "visionarc",
+    SOURCES: "visionarc/sources",
+    RENDERS: "visionarc/renders",
 } as const;
 
 // Timing Constants (in milliseconds)
@@ -16,7 +16,7 @@ export const PROGRESS_STEP = 5;
 
 // UI Constants
 export const GRID_OVERLAY_SIZE = "60px 60px";
-export const GRID_COLOR = "#3B82F6";
+export const GRID_COLOR = "#06b6d4";
 
 // HTTP Status Codes
 export const UNAUTHORIZED_STATUSES = [401, 403];
@@ -24,7 +24,7 @@ export const UNAUTHORIZED_STATUSES = [401, 403];
 // Image Dimensions
 export const IMAGE_RENDER_DIMENSION = 1024;
 
-export const ROOMIFY_RENDER_PROMPT = `
+export const VISIONARC_RENDER_PROMPT = `
 TASK: Convert the input 2D floor plan into a **photorealistic, top‑down 3D architectural render**.
 
 STRICT REQUIREMENTS (do not violate):

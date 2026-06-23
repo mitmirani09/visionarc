@@ -1,10 +1,10 @@
-import { useNavigate, useOutletContext, useParams} from "react-router";
-import {useEffect, useRef, useState} from "react";
-import {generate3DView} from "../../lib/ai.action";
-import {Box, Download, RefreshCcw, Share2, X} from "lucide-react";
+import { useNavigate, useOutletContext, useParams } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import { generate3DView } from "../../lib/ai.action";
+import { Box, Download, RefreshCcw, Share2, X } from "lucide-react";
 import Button from "../../components/ui/Button";
-import {createProject, getProjectById} from "../../lib/puter.action";
-import {ReactCompareSlider, ReactCompareSliderImage} from "react-compare-slider";
+import { createProject, getProjectById } from "../../lib/puter.action";
+import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
 
 const VisualizerId = () => {
     const { id } = useParams();
@@ -25,20 +25,20 @@ const VisualizerId = () => {
 
         const link = document.createElement('a');
         link.href = currentImage;
-        link.download = `roomify-${id || 'design'}.png`;
+        link.download = `visionarc-${id || 'design'}.png`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
     }
 
     const runGeneration = async (item: DesignItem) => {
-        if(!id || !item.sourceImage) return;
+        if (!id || !item.sourceImage) return;
 
         try {
             setIsProcessing(true);
             const result = await generate3DView({ sourceImage: item.sourceImage });
 
-            if(result.renderedImage) {
+            if (result.renderedImage) {
                 setCurrentImage(result.renderedImage);
 
                 const updatedItem = {
@@ -52,7 +52,7 @@ const VisualizerId = () => {
 
                 const saved = await createProject({ item: updatedItem, visibility: "private" })
 
-                if(saved) {
+                if (saved) {
                     setProject(saved);
                     setCurrentImage(saved.renderedImage || result.renderedImage);
                 }
@@ -116,7 +116,7 @@ const VisualizerId = () => {
                 <div className="brand">
                     <Box className="logo" />
 
-                    <span className="name">Roomify</span>
+                    <span className="name">VisionArc</span>
                 </div>
                 <Button variant="ghost" size="sm" onClick={handleBack} className="exit">
                     <X className="icon" /> Exit Editor
@@ -141,14 +141,14 @@ const VisualizerId = () => {
                             >
                                 <Download className="w-4 h-4 mr-2" /> Export
                             </Button>
-                            <Button size="sm" onClick={() => {}} className="share">
+                            <Button size="sm" onClick={() => { }} className="share">
                                 <Share2 className="w-4 h-4 mr-2" />
                                 Share
                             </Button>
                         </div>
                     </div>
 
-                    <div className={`render-area ${isProcessing ? 'is-processing': ''}`}>
+                    <div className={`render-area ${isProcessing ? 'is-processing' : ''}`}>
                         {currentImage ? (
                             <img src={currentImage} alt="AI Render" className="render-img" />
                         ) : (
